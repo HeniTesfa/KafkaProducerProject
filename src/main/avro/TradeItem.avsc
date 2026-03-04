@@ -1,0 +1,17 @@
+{
+  "namespace": "com.kafka.avro",
+  "type": "record",
+  "name": "TradeItem",
+  "fields": [
+    {"name": "tradeItemId", "type": "string"},
+    {"name": "itemId", "type": "string"},
+    {"name": "supplierId", "type": "string"},
+    {"name": "costPrice", "type": ["null", {"type": "bytes", "logicalType": "decimal", "precision": 18, "scale": 2}], "default": null},
+    {"name": "retailPrice", "type": ["null", {"type": "bytes", "logicalType": "decimal", "precision": 18, "scale": 2}], "default": null},
+    {"name": "currency", "type": "string"},
+    {"name": "minimumOrderQuantity", "type": "int"},
+    {"name": "status", "type": {"type": "enum", "name": "TradeItemStatus", "symbols": ["ACTIVE", "INACTIVE"]}},
+    {"name": "effectiveFrom", "type": {"type": "long", "logicalType": "timestamp-millis"}},
+    {"name": "effectiveTo", "type": ["null", {"type": "long", "logicalType": "timestamp-millis"}], "default": null}
+  ]
+}

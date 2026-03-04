@@ -1,0 +1,50 @@
+server:
+  port: 8088
+
+spring:
+  kafka:
+    bootstrap-servers: ${KAFKA_BOOTSTRAP:localhost:9092}
+    client-id: kafka-production-client
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+      # enable idempotence for exactly-once and deduplication
+      properties:
+        enable.idempotence: true
+        max.in.flight.requests.per.connection: 1
+    consumer:
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      group-id: production-group
+      auto-offset-reset: earliest
+      enable-auto-commit: false
+      properties:
+        isolation.level: read_committed
+    listener:
+      ack-mode: manual
+      concurrency: 4
+
+# high level kafka-specific settings
+kafka:
+  replication-factor: 1           # default replication factor used when creating topics
+  transaction-id-prefix: prod-
+  avro-transaction-id-prefix: avro-prod-
+
+# SSL/SASL config placeholders, fill with actual keystores
+#security:
+#  ssl:
+#    key-store-location: classpath:client.keystore.jks
+#    key-store-password: changeit
+#    trust-store-location: classpath:client.truststore.jks
+#    trust-store-password: changeit
+#  sasl:
+#    mechanism: SCRAM-SHA-256
+#    jaas.config: org.apache.kafka.common.security.scram.ScramLoginModule required username="user" password="pass";
+
+topics:
+  item: 12
+  tradeItem: 12
+  supplier: 12
+  order: 12
+  shipment: 12
+  sites: 12

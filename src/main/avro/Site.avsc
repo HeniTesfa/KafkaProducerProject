@@ -1,0 +1,19 @@
+{
+  "namespace": "com.kafka.avro",
+  "type": "record",
+  "name": "Site",
+  "fields": [
+    {"name": "siteId", "type": "string"},
+    {"name": "siteName", "type": "string"},
+    {"name": "siteType", "type": {"type": "enum", "name": "SiteType", "symbols": ["WAREHOUSE","STORE","DISTRIBUTION_CENTER"]}},
+    {"name": "address", "type": {"type": "record", "name": "Address", "fields": [
+        {"name": "line1", "type": "string"},
+        {"name": "line2", "type": ["null","string"], "default": null},
+        {"name": "city", "type": "string"},
+        {"name": "state", "type": "string"},
+        {"name": "postalCode", "type": "string"},
+        {"name": "country", "type": "string"}
+    ]}},
+    {"name": "status", "type": {"type": "enum", "name": "SiteStatus", "symbols": ["ACTIVE","INACTIVE"]}}
+  ]
+}

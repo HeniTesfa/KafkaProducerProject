@@ -1,0 +1,22 @@
+{
+  "namespace": "com.kafka.avro",
+  "type": "record",
+  "name": "Supplier",
+  "fields": [
+    {"name": "supplierId", "type": "string"},
+    {"name": "supplierName", "type": "string"},
+    {"name": "taxId", "type": ["null", "string"], "default": null},
+    {"name": "contactEmail", "type": ["null", "string"], "default": null},
+    {"name": "contactPhone", "type": ["null", "string"], "default": null},
+    {"name": "address", "type": {"type": "record", "name": "Address", "fields": [
+      {"name": "line1", "type": "string"},
+      {"name": "line2", "type": ["null", "string"], "default": null},
+      {"name": "city", "type": "string"},
+      {"name": "state", "type": "string"},
+      {"name": "postalCode", "type": "string"},
+      {"name": "country", "type": "string"}
+    ]}},
+    {"name": "status", "type": {"type": "enum", "name": "SupplierStatus", "symbols": ["ACTIVE", "SUSPENDED"]}},
+    {"name": "createdAt", "type": {"type": "long", "logicalType": "timestamp-millis"}}
+  ]
+}

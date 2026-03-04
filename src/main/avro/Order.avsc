@@ -1,0 +1,19 @@
+{
+  "namespace": "com.kafka.avro",
+  "type": "record",
+  "name": "Order",
+  "fields": [
+    {"name": "orderId", "type": "string"},
+    {"name": "supplierId", "type": "string"},
+    {"name": "siteId", "type": "string"},
+    {"name": "orderLines", "type": {"type": "array", "items": {"type": "record", "name": "OrderLine", "fields": [
+        {"name": "tradeItemId", "type": "string"},
+        {"name": "quantity", "type": "int"},
+        {"name": "unitPrice", "type": {"type":"bytes","logicalType":"decimal","precision":18,"scale":2}}
+      ]}}},
+    {"name": "totalAmount", "type": ["null", {"type":"bytes","logicalType":"decimal","precision":18,"scale":2}], "default": null},
+    {"name": "currency", "type": "string"},
+    {"name": "orderStatus", "type": {"type": "enum", "name": "OrderStatus", "symbols": ["CREATED","APPROVED","SHIPPED","COMPLETED"]}},
+    {"name": "orderDate", "type": {"type":"long","logicalType":"timestamp-millis"}}
+  ]
+}

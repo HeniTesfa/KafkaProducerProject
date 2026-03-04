@@ -1,0 +1,18 @@
+{
+  "namespace": "com.kafka.avro",
+  "type": "record",
+  "name": "Item",
+  "fields": [
+    {"name": "itemId", "type": "string"},
+    {"name": "sku", "type": "string"},
+    {"name": "name", "type": "string"},
+    {"name": "description", "type": ["null", "string"], "default": null},
+    {"name": "category", "type": "string"},
+    {"name": "brand", "type": "string"},
+    {"name": "status", "type": {"type": "enum", "name": "ItemStatus", "symbols": ["ACTIVE", "DISCONTINUED"]}},
+    {"name": "weight", "type": ["null", {"type": "bytes", "logicalType": "decimal", "precision": 10, "scale": 3}], "default": null},
+    {"name": "weightUnit", "type": ["null", "string"], "default": null},
+    {"name": "createdAt", "type": {"type": "long", "logicalType": "timestamp-millis"}},
+    {"name": "updatedAt", "type": {"type": "long", "logicalType": "timestamp-millis"}}
+  ]
+}

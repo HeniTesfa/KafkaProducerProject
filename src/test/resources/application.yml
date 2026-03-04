@@ -1,0 +1,19 @@
+server:
+  port: 0
+
+spring:
+  kafka:
+    bootstrap-servers: ${spring.embedded.kafka.brokers:localhost:9092}
+
+kafka:
+  replication-factor: 1
+  transaction-id-prefix: test-tx-
+  avro-transaction-id-prefix: avro-test-tx-
+
+topics:
+  item: 1
+  tradeItem: 1
+  supplier: 1
+  order: 1
+  shipment: 1
+  sites: 1
