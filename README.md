@@ -94,7 +94,7 @@ KafkaProducerProject/
 ## Building
 
 ```bash
-cd "C:\Users\henok\Desktop\Claude AI Projects\KafkaProducerProject"
+cd "C:\......\KafkaProducerProject"
 mvn clean package
 ```
 
